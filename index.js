@@ -39,13 +39,38 @@ const client = new MongoClient(uri, {
 async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
-    await client.connect();
+    // await client.connect();
+
+    const usersCollection = client.db("encoremusic").collection("userCollection")
+    const classCollection = client.db("encoremusic").collection("classCollection")
 
     app.post('/jwt', (req, res) => {
       const user = req.body;
       const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' })
 
       res.send({ token })
+    })
+
+    // User api
+    app.post('/users', async (req, res) => {
+      const user = req.body;
+      const query = { email: user.email }
+      const existingUser = await usersCollection.findOne(query);
+      if (existingUser) {
+        return res.send({ message: 'user already exists' })
+      }
+      const result = await usersCollection.insertOne(user);
+      res.send(result);
+    });
+
+    // Class Api
+    app.get("/classes", async(req, res) => {
+      let query = {};
+      const ascendingSort = {
+        sort: {total_enrolled_students: -1}
+      }
+      const result = await classCollection.find(query, ascendingSort).toArray();
+      res.send(result);
     })
 
     // Send a ping to confirm a successful connection
