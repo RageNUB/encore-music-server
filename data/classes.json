@@ -1,0 +1,58 @@
+[
+    {
+      "image": "https://example.com/class1.jpg",
+      "class_name": "Introduction to Piano",
+      "instructor_name": "John Smith",
+      "available_seat": 15,
+      "price": 200
+    },
+    {
+      "image": "https://example.com/class2.jpg",
+      "class_name": "Beginner Guitar Techniques",
+      "instructor_name": "Emily Johnson",
+      "available_seat": 10,
+      "price": 150
+    },
+    {
+      "image": "https://example.com/class3.jpg",
+      "class_name": "Vocal Performance Workshop",
+      "instructor_name": "Sarah Davis",
+      "available_seat": 12,
+      "price": 180
+    },
+    {
+      "image": "https://example.com/class4.jpg",
+      "class_name": "Drumming Fundamentals",
+      "instructor_name": "Michael Thompson",
+      "available_seat": 8,
+      "price": 220
+    },
+    {
+      "image": "https://example.com/class5.jpg",
+      "class_name": "Violin Techniques and Theory",
+      "instructor_name": "Sophia Roberts",
+      "available_seat": 6,
+      "price": 250
+    },
+    {
+      "image": "https://example.com/class6.jpg",
+      "class_name": "Songwriting and Composition",
+      "instructor_name": "David Wilson",
+      "available_seat": 10,
+      "price": 180
+    },
+    {
+      "image": "https://example.com/class7.jpg",
+      "class_name": "Ballet Music Appreciation",
+      "instructor_name": "Olivia Anderson",
+      "available_seat": 20,
+      "price": 120
+    },
+    {
+      "image": "https://example.com/class8.jpg",
+      "class_name": "Jazz Dance and Rhythm",
+      "instructor_name": "Daniel Lee",
+      "available_seat": 15,
+      "price": 160
+    }
+  ]

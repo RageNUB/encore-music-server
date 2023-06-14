@@ -1,0 +1,100 @@
+[
+    {
+      "name": "John Smith",
+      "email": "johnsmith@example.com",
+      "image": "https://example.com/instructor1.jpg",
+      "classes_taken": 4,
+      "taken_classes": [
+        "Introduction to Piano",
+        "Music Theory Fundamentals",
+        "Advanced Piano Techniques",
+        "Composition and Songwriting"
+      ]
+    },
+    {
+      "name": "Emily Johnson",
+      "email": "emilyjohnson@example.com",
+      "image": "https://example.com/instructor2.jpg",
+      "classes_taken": 6,
+      "taken_classes": [
+        "Guitar Basics",
+        "Acoustic Guitar Mastery",
+        "Electric Guitar Techniques",
+        "Song Accompaniment",
+        "Advanced Guitar Soloing",
+        "Introduction to Music Production"
+      ]
+    },
+    {
+      "name": "Sarah Davis",
+      "email": "sarahdavis@example.com",
+      "image": "https://example.com/instructor3.jpg",
+      "classes_taken": 3,
+      "taken_classes": [
+        "Vocal Performance Techniques",
+        "Stage Presence and Performance",
+        "Vocal Ensemble"
+      ]
+    },
+    {
+      "name": "Michael Thompson",
+      "email": "michaelthompson@example.com",
+      "image": "https://example.com/instructor4.jpg",
+      "classes_taken": 5,
+      "taken_classes": [
+        "Drumming Fundamentals",
+        "Rhythmic Patterns",
+        "Advanced Drum Techniques",
+        "Drumming Styles and Genres",
+        "Drumming Ensemble"
+      ]
+    },
+    {
+      "name": "Sophia Roberts",
+      "email": "sophiaroberts@example.com",
+      "image": "https://example.com/instructor5.jpg",
+      "classes_taken": 2,
+      "taken_classes": [
+        "Violin Basics",
+        "Classical Violin Repertoire"
+      ]
+    },
+    {
+      "name": "David Wilson",
+      "email": "davidwilson@example.com",
+      "image": "https://example.com/instructor6.jpg",
+      "classes_taken": 7,
+      "taken_classes": [
+        "Songwriting Fundamentals",
+        "Lyric Writing Techniques",
+        "Harmony and Melody",
+        "Arranging and Production",
+        "Music Theory for Songwriters",
+        "Creative Songwriting",
+        "Song Critique and Feedback"
+      ]
+    },
+    {
+      "name": "Olivia Anderson",
+      "email": "oliviaanderson@example.com",
+      "image": "https://example.com/instructor7.jpg",
+      "classes_taken": 3,
+      "taken_classes": [
+        "Ballet Fundamentals",
+        "Ballet Technique and Form",
+        "Contemporary Dance"
+      ]
+    },
+    {
+      "name": "Daniel Lee",
+      "email": "daniellee@example.com",
+      "image": "https://example.com/instructor8.jpg",
+      "classes_taken": 4,
+      "taken_classes": [
+        "Jazz Dance Basics",
+        "Jazz Dance Choreography",
+        "Latin Jazz Fusion",
+        "Improvisation Techniques"
+      ]
+    }
+  ]
