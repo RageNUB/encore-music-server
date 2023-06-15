@@ -43,7 +43,9 @@ async function run() {
 
     const usersCollection = client.db("encoremusic").collection("userCollection")
     const classCollection = client.db("encoremusic").collection("classCollection")
-
+    const instructorCollection = client.db("encoremusic").collection("instructorCollection")
+    const selectedClassesCollection = client.db("encoremusic").collection("selectedClasses")
+    
     app.post('/jwt', (req, res) => {
       const user = req.body;
       const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' })
@@ -70,6 +72,18 @@ async function run() {
         sort: {total_enrolled_students: -1}
       }
       const result = await classCollection.find(query, ascendingSort).toArray();
+      res.send(result);
+    })
+
+    app.post("/classes", verifyJWT, async(req, res) => {
+      const classItem = req.body;
+      const result = await selectedClassesCollection.insertOne(classItem)
+      res.send(result)
+    })
+
+    // Instructor Api
+    app.get("/instructors", async(req, res) => {
+      const result = await instructorCollection.find().toArray();
       res.send(result);
     })
 

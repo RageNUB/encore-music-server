@@ -1,100 +1,66 @@
 [
     {
-      "name": "John Smith",
-      "email": "johnsmith@example.com",
-      "image": "https://example.com/instructor1.jpg",
-      "classes_taken": 4,
+      "instructor_name": "John Smith",
+      "instructor_email": "johnsmith@gmail.com",
+      "instructor_image": "https://example.com/instructor1.jpg",
       "taken_classes": [
-        "Introduction to Piano",
-        "Music Theory Fundamentals",
-        "Advanced Piano Techniques",
-        "Composition and Songwriting"
+        "Piano Basics"
       ]
     },
     {
-      "name": "Emily Johnson",
-      "email": "emilyjohnson@example.com",
-      "image": "https://example.com/instructor2.jpg",
-      "classes_taken": 6,
+      "instructor_name": "Emily Johnson",
+      "instructor_email": "emily@gmail.com",
+      "instructor_image": "https://example.com/instructor2.jpg",
       "taken_classes": [
-        "Guitar Basics",
-        "Acoustic Guitar Mastery",
-        "Electric Guitar Techniques",
-        "Song Accompaniment",
-        "Advanced Guitar Soloing",
-        "Introduction to Music Production"
+        "Guitar Fundamentals"
       ]
     },
     {
-      "name": "Sarah Davis",
-      "email": "sarahdavis@example.com",
-      "image": "https://example.com/instructor3.jpg",
-      "classes_taken": 3,
+      "instructor_name": "Sarah Davis",
+      "instructor_email": "sarahdavis@gmail.com",
+      "instructor_image": "https://example.com/instructor3.jpg",
       "taken_classes": [
-        "Vocal Performance Techniques",
-        "Stage Presence and Performance",
-        "Vocal Ensemble"
+        "Vocal Techniques"
       ]
     },
     {
-      "name": "Michael Thompson",
-      "email": "michaelthompson@example.com",
-      "image": "https://example.com/instructor4.jpg",
-      "classes_taken": 5,
+      "instructor_name": "Michael Thompson",
+      "instructor_email": "thompson@gmail.com",
+      "instructor_image": "https://example.com/instructor4.jpg",
       "taken_classes": [
-        "Drumming Fundamentals",
-        "Rhythmic Patterns",
-        "Advanced Drum Techniques",
-        "Drumming Styles and Genres",
-        "Drumming Ensemble"
+        "Drumming 101"
       ]
     },
     {
-      "name": "Sophia Roberts",
-      "email": "sophiaroberts@example.com",
-      "image": "https://example.com/instructor5.jpg",
-      "classes_taken": 2,
+      "instructor_name": "Sophia Roberts",
+      "instructor_email": "sophia@gmail.com",
+      "instructor_image": "https://example.com/instructor5.jpg",
       "taken_classes": [
-        "Violin Basics",
-        "Classical Violin Repertoire"
+        "Violin Masterclass"
       ]
     },
     {
-      "name": "David Wilson",
-      "email": "davidwilson@example.com",
-      "image": "https://example.com/instructor6.jpg",
-      "classes_taken": 7,
+      "instructor_name": "David Wilson",
+      "instructor_email": "david@gmail.com",
+      "instructor_image": "https://example.com/instructor6.jpg",
       "taken_classes": [
-        "Songwriting Fundamentals",
-        "Lyric Writing Techniques",
-        "Harmony and Melody",
-        "Arranging and Production",
-        "Music Theory for Songwriters",
-        "Creative Songwriting",
-        "Song Critique and Feedback"
+        "Songwriting Workshop"
       ]
     },
     {
-      "name": "Olivia Anderson",
-      "email": "oliviaanderson@example.com",
-      "image": "https://example.com/instructor7.jpg",
-      "classes_taken": 3,
+      "instructor_name": "Olivia Anderson",
+      "instructor_email": "olivia@gmail.com",
+      "instructor_image": "https://example.com/instructor7.jpg",
       "taken_classes": [
-        "Ballet Fundamentals",
-        "Ballet Technique and Form",
-        "Contemporary Dance"
+        "Music Theory"
       ]
     },
     {
-      "name": "Daniel Lee",
-      "email": "daniellee@example.com",
-      "image": "https://example.com/instructor8.jpg",
-      "classes_taken": 4,
+      "instructor_name": "Daniel Lee",
+      "instructor_email": "daniel@gmail.com",
+      "instructor_image": "https://example.com/instructor8.jpg",
       "taken_classes": [
-        "Jazz Dance Basics",
-        "Jazz Dance Choreography",
-        "Latin Jazz Fusion",
-        "Improvisation Techniques"
+        "Music Production Essentials"
       ]
     }
   ]
