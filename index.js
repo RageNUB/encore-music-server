@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config()
 const jwt = require('jsonwebtoken');
+const stripe = require("stripe")(process.env.PAYMENT_TEST_KEY)
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const app = express();
 const port = process.env.PORT || 5000;
@@ -45,6 +46,7 @@ async function run() {
     const classCollection = client.db("encoremusic").collection("classCollection")
     const instructorCollection = client.db("encoremusic").collection("instructorCollection")
     const selectedClassesCollection = client.db("encoremusic").collection("selectedClasses")
+    const paymentCollection = client.db("encoremusic").collection("paymentCollection")
     
     app.post('/jwt', (req, res) => {
       const user = req.body;
@@ -100,14 +102,38 @@ async function run() {
       const query = { user_email: email };
       const result = await selectedClassesCollection.find(query).toArray();
       res.send(result);
-
     })
 
+    // Payment Api
     app.get("/payment/:id", async(req, res) => {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) };
       const result = await selectedClassesCollection.findOne(query)
       res.send(result);
+    })
+
+    app.post('/create-payment-intent', verifyJWT, async (req, res) => {
+      const { price } = req.body;
+      const amount = parseInt(price * 100);
+      const paymentIntent = await stripe.paymentIntents.create({
+        amount: amount,
+        currency: 'usd',
+        payment_method_types: ['card']
+      });
+
+      res.send({
+        clientSecret: paymentIntent.client_secret
+      })
+    })
+
+    app.post('/payments', verifyJWT, async (req, res) => {
+      const payment = req.body;
+      const insertResult = await paymentCollection.insertOne(payment);
+
+      const query = { _id: new ObjectId(payment.itemId) }
+      const deleteResult = await selectedClassesCollection.deleteOne(query)
+
+      res.send({ insertResult, deleteResult });
     })
 
     // Instructor Api
