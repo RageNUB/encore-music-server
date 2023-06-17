@@ -55,7 +55,43 @@ async function run() {
       res.send({ token })
     })
 
+    const verifyAdmin = async (req, res, next) => {
+      const email = req.decoded.email;
+      const query = { email: email }
+      const user = await usersCollection.findOne(query);
+      if (user?.role !== 'admin') {
+        return res.status(403).send({ error: true, message: 'forbidden access' });
+      }
+      next();
+    }
+
+    const verifyInstructor = async (req, res, next) => {
+      const email = req.decoded.email;
+      const query = { email: email }
+      const user = await usersCollection.findOne(query);
+      if (user?.role !== 'instructor') {
+        return res.status(403).send({ error: true, message: 'forbidden access' });
+      }
+      next();
+    }
+
     // User api
+    app.get('/users-role', verifyJWT,  async (req, res) => {
+      const email = req.query.email;
+      if (req.decoded.email !== email) {
+        res.send({ userRole: null })
+      }
+      const query = { email: email }
+      const user = await usersCollection.findOne(query);
+      const result = { userRole: user?.role }
+      res.send(result);
+    });
+
+    app.get('/users-instructor', verifyJWT, verifyInstructor, async (req, res) => {
+      const result = await usersCollection.find().toArray();
+      res.send(result);
+    });
+
     app.post('/users', async (req, res) => {
       const user = req.body;
       const query = { email: user.email }
@@ -70,10 +106,10 @@ async function run() {
     // Class Api
     app.get("/classes", async(req, res) => {
       let query = {};
-      const ascendingSort = {
+      const descendingSort = {
         sort: {total_enrolled_students: -1}
       }
-      const result = await classCollection.find(query, ascendingSort).toArray();
+      const result = await classCollection.find(query, descendingSort).toArray();
       res.send(result);
     })
 
@@ -157,6 +193,23 @@ async function run() {
       const updateResult = await classCollection.updateOne(filter, increment)
 
       res.send({ insertResult, deleteResult, updateResult });
+    })
+
+    app.get("/payment-history", verifyJWT, async(req, res) => {
+      const email = req.query.email;
+      if (!email) {
+        res.send([]);
+      }
+      const decodedEmail = req.decoded.email;
+      if (email !== decodedEmail) {
+        return res.status(403).send({ error: true, message: 'forbidden access' })
+      }
+      const query = { user_email: email };
+      const descendingSort = {
+        sort: {date: -1}
+      }
+      const result = await paymentCollection.find(query, descendingSort).toArray();
+      res.send(result);
     })
 
     // Instructor Api
