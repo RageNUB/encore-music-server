@@ -87,8 +87,12 @@ async function run() {
       res.send(result);
     });
 
-    app.get('/users-instructor', verifyJWT, verifyInstructor, async (req, res) => {
-      const result = await usersCollection.find().toArray();
+    app.get('/users', verifyJWT, verifyAdmin, async (req, res) => {
+      const query = {}
+      const descendingSort = {
+        sort: {role: -1}
+      }
+      const result = await usersCollection.find(query, descendingSort).toArray();
       res.send(result);
     });
 
@@ -103,14 +107,86 @@ async function run() {
       res.send(result);
     });
 
+    app.put("/manageUsers/:id", async(req, res) => {
+      const id = req.params.id;
+      const filter = { _id: new ObjectId(id) };
+      const role = req.body;
+      const updateRole = {
+        $set: {
+          role: role.role
+        }
+      }
+      const result = await usersCollection.updateOne(filter, updateRole);
+      res.send(result);
+    })
+
     // Class Api
     app.get("/classes", async(req, res) => {
-      let query = {};
+      let query = {
+        status: "approved"
+      };
       const descendingSort = {
         sort: {total_enrolled_students: -1}
       }
       const result = await classCollection.find(query, descendingSort).toArray();
       res.send(result);
+    })
+
+    app.get("/myClasses", verifyJWT, verifyInstructor, async(req, res) => {
+      const email = req.query.email;
+      if (!email) {
+        res.send([]);
+      }
+      const decodedEmail = req.decoded.email;
+      if (email !== decodedEmail) {
+        return res.status(403).send({ error: true, message: 'forbidden access' })
+      }
+      const query = { instructor_email: email };
+      const result = await classCollection.find(query).toArray();
+      res.send(result);
+    })
+
+    app.get("/manageClasses", verifyJWT, verifyAdmin, async(req, res) => {
+      const query = {}
+      const descendingSort = {
+        sort: {status: -1}
+      }
+      const result = await classCollection.find(query, descendingSort).toArray();
+      res.send(result);
+    })
+
+    app.put("/manageClasses/:id", verifyJWT, verifyAdmin, async(req, res) => {
+      const id = req.params.id;
+      const filter = { _id: new ObjectId(id) };
+      const status = req.body;
+      const updateStatus = {
+        $set: {
+          status: status.status
+        }
+      }
+      const result = await classCollection.updateOne(filter, updateStatus)
+      res.send(result)
+    })
+
+    app.put("/feedback/:id", async(req, res) => {
+      const id = req.params.id;
+      const filter = { _id: new ObjectId(id) };
+      const feedback = req.body;
+      const options = { upsert: true };
+      const updateFeedback = {
+        $set: {
+          feedback: feedback.feedback
+        }
+      }
+      const result = await classCollection.updateOne(filter, updateFeedback, options)
+      res.send(result)
+    })
+
+    app.get("/classes/:id", async(req, res) => {
+      const id = req.params.id;
+      const filter = { _id: new ObjectId(id) };
+      const result = await classCollection.findOne(filter)
+      res.send(result)
     })
 
     app.post("/classes", verifyJWT, async(req, res) => {
@@ -151,6 +227,12 @@ async function run() {
       }
       const query = { user_email: email };
       const result = await paymentCollection.find(query).toArray();
+      res.send(result);
+    })
+
+    app.post("/add-class", verifyJWT, verifyInstructor, async(req, res) => {
+      const classItem = req.body;
+      const result = await classCollection.insertOne(classItem)
       res.send(result);
     })
 

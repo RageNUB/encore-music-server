@@ -4,9 +4,10 @@
     "class_name": "Piano Basics",
     "instructor_name": "John Smith",
     "instructor_email": "johnsmith@gmail.com",
-    "total_seats": 20,
+    "total_seats": 23,
     "total_enrolled_students": 15,
-    "price": 200
+    "price": 200,
+    "status": "approved"
   },
   {
     "image": "https://img.freepik.com/free-photo/man-with-guitar-front-laptop-late-hour-learns-play_169016-17530.jpg?w=1060&t=st=1686749144~exp=1686749744~hmac=3a6a52a903185617fbc8d3a80f78cf293df51524ceb58c74a0777975214b3f08",
@@ -15,7 +16,8 @@
     "instructor_email": "emily@gmail.com",
     "total_seats": 32,
     "total_enrolled_students": 20,
-    "price": 150
+    "price": 150,
+    "status": "approved"
   },
   {
     "image": "https://img.freepik.com/free-photo/recording-new-song-attractive-singer-is-singing-new-audio-material_613910-3054.jpg?w=996&t=st=1686749206~exp=1686749806~hmac=56993cb3e7a455432cdd3dd4c85aea8afc7cdaf3eb086bda533d5e28c6df20a5",
@@ -24,7 +26,8 @@
     "instructor_email": "sarahdavis@gmail.com",
     "total_seats": 35,
     "total_enrolled_students": 26,
-    "price": 180
+    "price": 180,
+    "status": "approved"
   },
   {
     "image": "https://img.freepik.com/free-photo/part-drum-kit-dark-with-beautiful-lighting-concert-performance-concept_169016-9510.jpg?w=996&t=st=1686749250~exp=1686749850~hmac=9f59e8ac9ee1913ca56081f2593ee12aa815b901ee1d33d7fda6ea60509017db",
@@ -33,7 +36,8 @@
     "instructor_email": "thompson@gmail.com",
     "total_seats": 25,
     "total_enrolled_students": 17,
-    "price": 220
+    "price": 220,
+    "status": "approved"
   },
   {
     "image": "https://img.freepik.com/free-photo/young-beautiful-woman-with-violin_144627-12322.jpg?w=996&t=st=1686749292~exp=1686749892~hmac=93558b9d224dd7c48d75c32490862ab52bd2008f24f5200a8ea72522b6ec7266",
@@ -42,7 +46,8 @@
     "instructor_email": "sophia@gmail.com",
     "total_seats": 20,
     "total_enrolled_students": 12,
-    "price": 250
+    "price": 250,
+    "status": "approved"
   },
   {
     "image": "https://img.freepik.com/free-photo/closeup-casual-man-composing-music_53876-24792.jpg?w=996&t=st=1686749338~exp=1686749938~hmac=25d9ded19ca39d834f27d4f8b98545d1e1ca40b7723a9e93f4b9f7327ab0d410",
@@ -51,16 +56,18 @@
     "instructor_email": "david@gmail.com",
     "total_seats": 17,
     "total_enrolled_students": 10,
-    "price": 180
+    "price": 180,
+    "status": "approved"
   },
   {
     "image": "https://img.freepik.com/free-photo/shiny-harmonica-sheet-music_23-2147781837.jpg?w=996&t=st=1686749602~exp=1686750202~hmac=8368c864b6880d0a6ae557d6a8ab96ae28fbe790059a4e7eca1fc3c6ec380af8",
     "class_name": "Music Theory",
     "instructor_name": "Olivia Anderson",
     "instructor_email": "olivia@gmail.com",
-    "total_seats": 27,
+    "total_seats": 29,
     "total_enrolled_students": 20,
-    "price": 120
+    "price": 120,
+    "status": "approved"
   },
   {
     "image": "https://img.freepik.com/free-photo/digital-mixer-recording-studio-with-computer-recording-sounds-music-concept-creativity-show-business_169016-2284.jpg?w=996&t=st=1686749666~exp=1686750266~hmac=20ef6b12ffd85bddc98bb1746050b648707b35ee14218695f2accd49b35be93b",
@@ -69,6 +76,7 @@
     "instructor_email": "daniel@gmail.com",
     "total_seats": 30,
     "total_enrolled_students": 16,
-    "price": 160
+    "price": 160,
+    "status": "approved"
   }
 ]
