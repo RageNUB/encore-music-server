@@ -104,6 +104,20 @@ async function run() {
       res.send(result);
     })
 
+    app.get("/enrolledClasses", verifyJWT, async(req, res) => {
+      const email = req.query.email;
+      if (!email) {
+        res.send([]);
+      }
+      const decodedEmail = req.decoded.email;
+      if (email !== decodedEmail) {
+        return res.status(403).send({ error: true, message: 'forbidden access' })
+      }
+      const query = { user_email: email };
+      const result = await paymentCollection.find(query).toArray();
+      res.send(result);
+    })
+
     // Payment Api
     app.get("/payment/:id", async(req, res) => {
       const id = req.params.id;
@@ -133,7 +147,16 @@ async function run() {
       const query = { _id: new ObjectId(payment.itemId) }
       const deleteResult = await selectedClassesCollection.deleteOne(query)
 
-      res.send({ insertResult, deleteResult });
+      const id = payment.itemId
+      const filter = { _id: new ObjectId(id) };
+      const increment = {
+        $inc: {
+          total_enrolled_students: 1
+        }
+      }
+      const updateResult = await classCollection.updateOne(filter, increment)
+
+      res.send({ insertResult, deleteResult, updateResult });
     })
 
     // Instructor Api
