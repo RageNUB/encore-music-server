@@ -110,14 +110,16 @@ async function run() {
     app.put("/manageUsers/:id", async(req, res) => {
       const id = req.params.id;
       const filter = { _id: new ObjectId(id) };
-      const role = req.body;
+      const user = req.body;
       const updateRole = {
         $set: {
-          role: role.role
+          role: user.role
         }
       }
-      const result = await usersCollection.updateOne(filter, updateRole);
-      res.send(result);
+      const updateResult = await usersCollection.updateOne(filter, updateRole);
+
+      const insertResult = await instructorCollection.insertOne(user)
+      res.send({updateResult, insertResult});
     })
 
     // Class Api
@@ -144,6 +146,21 @@ async function run() {
       const query = { instructor_email: email };
       const result = await classCollection.find(query).toArray();
       res.send(result);
+    })
+
+    app.put("/myClasses/:id", async(req, res) => {
+      const id = req.params.id;
+      const filter = { _id: new ObjectId(id) };
+      const classData = req.body;
+      const updateClass = {
+        $set: {
+          image: classData.image,
+          total_seats: classData.total_seats,
+          price: classData.price,
+        }
+      }
+      const result = await classCollection.updateOne(filter, updateClass)
+      res.send(result)
     })
 
     app.get("/manageClasses", verifyJWT, verifyAdmin, async(req, res) => {
@@ -261,6 +278,7 @@ async function run() {
     app.post('/payments', verifyJWT, async (req, res) => {
       const payment = req.body;
       const insertResult = await paymentCollection.insertOne(payment);
+      console.log(payment)
 
       const query = { _id: new ObjectId(payment.itemId) }
       const deleteResult = await selectedClassesCollection.deleteOne(query)
